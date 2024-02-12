@@ -1,0 +1,66 @@
+.main_text {
+  background: linear-gradient(45deg, #ffcc00, #8b7500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 100px;
+}
+
+.input_search {
+  background-color: #6ab04c;
+  color: #fff;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.input_search:hover {
+  background-color: #6ab04c;
+  color: #fff;
+}
+
+.input_search::placeholder {
+  color: #fff;
+  font-size: 20px;
+}
+
+.employer_status {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.banner_card {
+  background-color: #fff;
+  box-shadow: 0 0 10px linear-gradient(135deg, #ff7979, #ff6b6b);
+  border: 1px solid linear-gradient(135deg, #ff7979, #ff6b6b);
+  margin-top: 20px;
+  background: linear-gradient(135deg, #ff7979, #ff6b6b);
+}
+
+.banner_card:nth-child(2) {
+  background: linear-gradient(135deg, #7ed6df, #22a6b3);
+  box-shadow: 0 0 10px linear-gradient(135deg, #7ed6df, #22a6b3);
+  border: 1px solid linear-gradient(135deg, #7ed6df, #22a6b3);
+}
+
+.banner_card:nth-child(3) {
+  background: linear-gradient(135deg, #f9ca24, #f0932b);
+  box-shadow: 0 0 10px linear-gradient(135deg, #f9ca24, #f0932b);
+  border: 1px solid linear-gradient(135deg, #f9ca24, #f0932b);
+}
+
+.banner_card:nth-child(4) {
+  background: linear-gradient(135deg, #6ab04c, #1e8449);
+  box-shadow: 0 0 10px linear-gradient(135deg, #6ab04c, #1e8449);
+  border: 1px solid linear-gradient(135deg, #6ab04c, #1e8449);
+}
+
+.jobs_info {
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
