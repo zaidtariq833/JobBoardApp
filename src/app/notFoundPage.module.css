@@ -1,0 +1,12 @@
+.notFoundDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.notFound {
+  text-align: center;
+  color: dodgerblue;
+  background-color: #f5f5dc;
+}

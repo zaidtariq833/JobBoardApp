@@ -1,7 +1,9 @@
 .navbar {
-  background-color: #4682b4;
+  /* background-color: #4682b4; */
   color: #fff;
   padding: 1rem 0;
+  background-color: #4682b4;
+  height: 70px;
 }
 
 .container {
@@ -18,20 +20,20 @@
   text-decoration: none;
 }
 
-.nav-links {
+.navLinks {
   list-style: none;
   display: flex;
 }
 
-.nav-links li {
+.navLinks li {
   margin-right: 1rem;
 }
 
-.nav-links li a {
+.navLinks li a {
   text-decoration: none;
   color: #fff;
 }
 
-.nav-links li a:hover {
+.navLinks li a:hover {
   color: #ddd;
 }

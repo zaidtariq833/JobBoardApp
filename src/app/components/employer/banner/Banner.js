@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./banner.css";
 import { Input } from "antd";
-import HeaderEmployer from "../headerEmployer/HeaderEmployer";
 import { Line } from "react-chartjs-2";
+import LayoutNavbar from "../layout";
 
 const Banner = () => {
   const employeeInfo = {
@@ -13,10 +13,9 @@ const Banner = () => {
   };
   return (
     <>
-      <HeaderEmployer />
       <div>
+        <LayoutNavbar />
         <h1 className="main_text">Hello Zaid, What're you doing today?</h1>
-        {/* <Input placeholder="Search Jobs You Posted" className="input_search" /> */}
         <div className="employer_status">
           <div className="banner_card">
             <h2 className="jobs_info">

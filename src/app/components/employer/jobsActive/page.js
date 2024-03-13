@@ -1,17 +1,16 @@
+"use client";
 import React from "react";
-import HeaderEmployer from "../HeaderEmployer";
+// import HeaderEmployer from "../headerEmployer/page";
 import styles from "../jobsActive/jobsActive.module.css";
 import { Card, Space } from "antd";
 
 const JobsActive = () => {
-  document.title = "Jobs Active";
   const data = `We are seeking a talented and experienced React Developer to
     join our team. As a React Developer, you will be responsible
     for developing user`;
   console.log(data.length, "data length");
   return (
     <div>
-      <HeaderEmployer />
       <div>
         <h1 className={styles.jobs_posted}>Jobs Active</h1>
       </div>

@@ -1,20 +1,25 @@
 "use client";
 import React from "react";
+
+// Employer Components
+
 import Banner from "./components/employer/banner/Banner";
-import JobsPosted from "./components/employer/headerEmployer/jobsPosted/JobsPosted";
-import JobsExpired from "./components/employer/headerEmployer/jobsExpired/JobsExpired";
-import JobsActive from "./components/employer/headerEmployer/jobsActive/JobsActive";
+
+// Applcant Components
+
+// Admin Components
 
 const page = () => {
   return (
     <>
-      {/* <Banner /> */}
       {/* employer components */}
-      {/* <JobsPosted /> */}
-      <JobsActive />
+      <Banner />
+
       {/* applicant components */}
     </>
   );
 };
 
 export default page;
+
+// to create dynamic routes you have to write [] in folder name
