@@ -22,9 +22,14 @@
 }
 
 .jobsPostedCard {
-  display: flex;
-  justify-content: space-around;
-  line-height: 0.5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 50px;
+}
+
+.jobsPostedCard:hover {
+  cursor: pointer;
 }
 
 .jobTitle {

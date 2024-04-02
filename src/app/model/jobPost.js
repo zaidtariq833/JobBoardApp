@@ -11,8 +11,7 @@ const JobPostSchema = new mongoose.Schema({
   timings: String,
   jobType: String,
   qualifications: String,
-  jobStatus: String,
-  posted: String,
+  jobPosted: String,
   applicationDeadline: String,
 });
 

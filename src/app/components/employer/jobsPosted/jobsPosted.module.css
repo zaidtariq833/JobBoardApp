@@ -22,9 +22,51 @@
 }
 
 .jobsPostedCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 50px;
+}
+
+.cardStyles:hover {
+  border: 1px solid dodgerblue;
+  transition-duration: 0.9s;
+}
+
+.jobsPostedCard:hover {
+  cursor: pointer;
+}
+
+.expired {
+  color: red;
+  background-color: pink;
+  font-weight: bold;
+  padding: 5px;
+  border: 5px solid red;
+  border-radius: "10px";
+}
+
+.inputStyle {
   display: flex;
-  justify-content: space-around;
-  line-height: 0.5;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.inputs {
+  padding: 20px;
+  border-radius: 30px;
+  border: none;
+  width: 50%;
+}
+
+.active {
+  color: green;
+  background-color: lightgreen;
+  font-weight: bold;
+  padding: 5px;
+  border: 5px solid green;
+  border-radius: "10px";
 }
 
 .jobTitle {
@@ -35,10 +77,26 @@
 
 .salary {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
 }
 
 .description {
   text-align: justify;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  height: 20vh;
 }

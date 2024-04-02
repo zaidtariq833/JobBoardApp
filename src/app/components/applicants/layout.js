@@ -1,24 +1,23 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import styles from "../employer/layoutNavbar.module.css";
+import styles from "../../../app/components/employer/layoutNavbar.module.css";
 import { usePathname } from "next/navigation";
-import Login from "../employer/logIn/page";
+import Login from "../applicants/login/page";
 import Image from "next/image";
-import logo from "../../../../assets/talenthirelogo.png";
+import SignUp from "../applicants/signup/page";
 
 const LayoutNavbar = ({ children }) => {
   const pathname = usePathname();
-
+  console.log(pathname, "path");
   return (
     <>
-      {pathname !== "/components/employer/logIn" &&
-      pathname !== "/components/employer/signUp" ? (
+      {pathname !== "/components/applicants/login" ? (
         <>
           <nav className={styles.navbar}>
             <div className={styles.container}>
               <Link href="/">
-                <Image className={styles.logo} src={logo} alt="logo" />
+                <Image className={styles.logo} alt="logo" />
               </Link>
               <ul className={styles.navLinks}>
                 <li>

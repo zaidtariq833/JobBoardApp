@@ -3,7 +3,7 @@ import React from "react";
 
 // Employer Components
 
-import Banner from "./components/employer/banner/Banner";
+import Main from "./components/main/page";
 
 // Applcant Components
 
@@ -13,7 +13,7 @@ const page = () => {
   return (
     <>
       {/* employer components */}
-      <Banner />
+      <Main />
 
       {/* applicant components */}
     </>

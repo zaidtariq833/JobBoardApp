@@ -1,8 +1,12 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button, Form, Input, InputNumber } from "antd";
-import styles from "./postNewJob.module.css";
-import { addNewJob } from "@/app/redux/employer/jobPostedSlice/jobPostedSlice";
+import styles from "../postNewJob.module.css";
+import {
+  addNewJob,
+  getSingleJob,
+  updateJob,
+} from "@/app/redux/employer/jobPostedSlice/jobPostedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { DatePicker, Space } from "antd";
@@ -10,7 +14,9 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import JoditEditor from "jodit-react";
 
-const PostNewJob = () => {
+const EditJob = ({ params }) => {
+  const { editJobId } = params;
+  console.log(params, "params in edit job");
   const { isSuccess } = useSelector((state) => state.jobPost);
   const editor = useRef(null);
   const dispatch = useDispatch();
@@ -26,13 +32,21 @@ const PostNewJob = () => {
     timings: "",
     jobType: "",
     qualifications: "",
-    applicationDeadline: null,
+    applicationDeadline: new Date(),
   });
+
+  useEffect(() => {
+    const fetchSingleJobs = async () => {
+      const data = await dispatch(getSingleJob(editJobId));
+      setNewJobPost(data.payload);
+    };
+    fetchSingleJobs();
+  }, []);
 
   const clearFields = () => {
     setNewJobPost({
       company: "",
-      companyURL: "",
+      companyWebsite: "",
       jobTitle: "",
       salary: 0,
       experience: "",
@@ -43,7 +57,6 @@ const PostNewJob = () => {
       qualifications: "",
       jobStatus: "",
       applicationDeadline: null,
-      jobPosted: new Date(),
     });
   };
 
@@ -55,20 +68,10 @@ const PostNewJob = () => {
     console.log(newJobPost, "new job postings");
   };
 
-  const addNewJobs = () => {
-    const { applicationDeadline, salary } = newJobPost;
+  const UpdateJobs = () => {
+    const { applicationDeadline } = newJobPost;
     const currentDate = new Date();
-    if (salary < 0) {
-      Toastify({
-        text: "Please Select Salary Greater than 0!!!",
-        className: "info",
-        style: {
-          background: "red",
-        },
-      }).showToast();
-      return;
-    }
-    if (currentDate > applicationDeadline) {
+    if (currentDate > applicationDeadline || applicationDeadline === null) {
       Toastify({
         text: "Please Select Correct Format of Date!!!",
         className: "info",
@@ -78,10 +81,10 @@ const PostNewJob = () => {
       }).showToast();
       return;
     } else {
-      dispatch(addNewJob(newJobPost));
+      dispatch(updateJob({ editJobId, newJobPost }));
       clearFields();
       Toastify({
-        text: "Form Submitted Successfully!!!",
+        text: "Form Updated Successfully!!!",
         className: "info",
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
@@ -95,6 +98,7 @@ const PostNewJob = () => {
 
   return (
     <div>
+      {/* <HeaderEmployer /> */}
       <div className={styles.jobPostForm}>
         <h1 className={styles.jobPostHeading}>New Job Post</h1>
         <Form
@@ -111,7 +115,7 @@ const PostNewJob = () => {
           initialValues={{
             remember: true,
           }}
-          onFinish={addNewJobs}
+          onFinish={UpdateJobs}
           autoComplete="off"
         >
           <Form.Item
@@ -131,8 +135,8 @@ const PostNewJob = () => {
 
           <Form.Item label="Company's Url">
             <Input
-              value={newJobPost.companyWebsite}
-              onChange={(e) => handleChange("companyWebsite", e.target.value)}
+              value={newJobPost.companyURL}
+              onChange={(e) => handleChange("companyURL", e.target.value)}
             />
           </Form.Item>
 
@@ -255,7 +259,7 @@ const PostNewJob = () => {
                 htmlType="submit"
                 className={styles.clrPost}
               >
-                Post Job
+                Edit Job
               </Button>
             </Form.Item>
 
@@ -276,4 +280,4 @@ const PostNewJob = () => {
   );
 };
 
-export default PostNewJob;
+export default EditJob;

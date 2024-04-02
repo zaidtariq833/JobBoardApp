@@ -1,45 +1,79 @@
 .jobs_posted {
-    background: linear-gradient(45deg, #ffcc00, #8b7500);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    font-size: 100px;
-    text-align: center;
-  }
-  
-  .blurryEffect {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1)
-    );
-  }
-  
-  .jobsPostedCard {
-    display: flex;
-    justify-content: space-around;
-    line-height: 0.5;
-  }
-  
-  .jobTitle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .salary {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .description {
-    text-align: justify;
-  }
-  
+  background: linear-gradient(45deg, #ffcc00, #8b7500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 100px;
+  text-align: center;
+}
+
+.blurryEffect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.jobsPostedCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 50px;
+}
+
+.jobsPostedCard:hover {
+  cursor: pointer;
+}
+
+.noJobAvailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editIcon {
+  background-color: dodgerblue;
+  padding: 10px;
+  color: #fff;
+}
+
+.deleteIcon {
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.iconsStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jobTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.salary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.description {
+  text-align: justify;
+}
