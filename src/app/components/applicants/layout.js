@@ -12,49 +12,46 @@ const LayoutNavbar = ({ children }) => {
   console.log(pathname, "path");
   return (
     <>
-      {pathname !== "/components/applicants/login" ? (
+      {pathname === "/components/applicants/login" ||
+      pathname === "/components/applicants/signup" ? (
         <>
-          <nav className={styles.navbar}>
-            <div className={styles.container}>
-              <Link href="/">
-                <Image className={styles.logo} alt="logo" />
-              </Link>
-              <ul className={styles.navLinks}>
-                <li>
-                  <Link href="/components/employer/dashboard">DASHBOARD</Link>
-                </li>
-                <li>
-                  <Link href="/components/employer/jobsPosted">
-                    JOBS POSTED
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/components/employer/jobsExpired">
-                    JOBS EXPIRED
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/components/employer/jobsActive">
-                    JOBS ACTIVE
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/components/employer/totalCandidatesHired">
-                    TOTAL CANDIDATES HIRED
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/components/employer/postNewJob">
-                    POST A NEW JOB
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            {children}
-          </nav>
+          {pathname === "/components/applicants/login" ? <Login /> : <SignUp />}
         </>
       ) : (
-        <Login />
+        <nav className={styles.navbar}>
+          <div className={styles.container}>
+            <Link href="/">
+              <Image className={styles.logo} src={logo} alt="logo" />
+            </Link>
+            <ul className={styles.navLinks}>
+              <li>
+                <Link href="/components/employer/dashboard">DASHBOARD</Link>
+              </li>
+              <li>
+                <Link href="/components/employer/jobsPosted">JOBS POSTED</Link>
+              </li>
+              <li>
+                <Link href="/components/employer/jobsExpired">
+                  JOBS EXPIRED
+                </Link>
+              </li>
+              <li>
+                <Link href="/components/employer/jobsActive">JOBS ACTIVE</Link>
+              </li>
+              <li>
+                <Link href="/components/employer/totalCandidatesHired">
+                  TOTAL CANDIDATES HIRED
+                </Link>
+              </li>
+              <li>
+                <Link href="/components/employer/postNewJob">
+                  POST A NEW JOB
+                </Link>
+              </li>
+            </ul>
+          </div>
+          {children}
+        </nav>
       )}
     </>
   );
