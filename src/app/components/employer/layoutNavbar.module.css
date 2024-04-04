@@ -14,6 +14,10 @@
   padding: 0 1rem;
 }
 
+.text {
+  font-size: 13px;
+}
+
 .logo {
   mix-blend-mode: multiply;
   filter: hue-rotate(180deg);

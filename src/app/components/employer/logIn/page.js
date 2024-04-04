@@ -5,6 +5,8 @@ import { Button, Form, Input } from "antd";
 import Image from "next/image";
 import logo from "../../../../../assets/talenthirelogo.png";
 import { useRouter } from "next/navigation";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 const page = () => {
   const router = useRouter();
@@ -18,6 +20,20 @@ const page = () => {
       ...login,
       [name]: value,
     });
+  };
+
+  const loginEmployer = () => {
+    const { email, password } = login;
+    if (email == "" || password == "") {
+      Toastify({
+        text: "Please Enter required Credentials!!!",
+        className: "info",
+        style: {
+          background: "red",
+        },
+      }).showToast();
+      return;
+    }
   };
 
   return (
@@ -39,13 +55,15 @@ const page = () => {
           initialValues={{
             remember: true,
           }}
-          // onFinish={addNewJobs}
+          onFinish={loginEmployer}
           autoComplete="off"
         >
           <Form.Item label="Email" style={{ color: "#fff" }}>
             <Input
               value={login?.email}
               onChange={(e) => handleChange("email", e.target.value)}
+              required
+              placeholder="Enter Email..."
             />
           </Form.Item>
 
@@ -54,6 +72,7 @@ const page = () => {
               value={login?.password}
               onChange={(e) => handleChange("password", e.target.value)}
               placeholder="Enter Password"
+              required
             />
           </Form.Item>
           <div className={styles.buttons}>

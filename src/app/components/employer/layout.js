@@ -26,27 +26,32 @@ const LayoutNavbar = ({ children }) => {
             </Link>
             <ul className={styles.navLinks}>
               <li>
-                <Link href="/components/employer/dashboard">DASHBOARD</Link>
+                <Link className= {styles.text} href="/components/employer/dashboard">DASHBOARD</Link>
               </li>
               <li>
-                <Link href="/components/employer/jobsPosted">JOBS POSTED</Link>
+                <Link href="/components/employer/jobsPosted" className= {styles.text}>JOBS POSTED</Link>
               </li>
               <li>
-                <Link href="/components/employer/jobsExpired">
+                <Link href="/components/employer/jobsExpired" className= {styles.text}>
                   JOBS EXPIRED
                 </Link>
               </li>
               <li>
-                <Link href="/components/employer/jobsActive">JOBS ACTIVE</Link>
+                <Link href="/components/employer/jobsActive" className= {styles.text}>JOBS ACTIVE</Link>
               </li>
               <li>
-                <Link href="/components/employer/totalCandidatesHired">
+                <Link href="/components/employer/totalCandidatesHired" className= {styles.text}>
                   TOTAL CANDIDATES HIRED
                 </Link>
               </li>
               <li>
-                <Link href="/components/employer/postNewJob">
+                <Link href="/components/employer/postNewJob" className= {styles.text}>
                   POST A NEW JOB
+                </Link>
+              </li>
+              <li>
+                <Link href="/components/employer/createprofile" className= {styles.text}>
+                  CREATE PROFILE
                 </Link>
               </li>
             </ul>

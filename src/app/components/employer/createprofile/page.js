@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { Button, Form, Input, InputNumber } from "antd";
-import styles from "./postNewJob.module.css";
+import { Button, Form, Input, Upload } from "antd";
+import styles from "../postNewJob/postNewJob.module.css";
 import { addNewJob } from "@/app/redux/employer/jobPostedSlice/jobPostedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -9,8 +9,9 @@ import { DatePicker, Space } from "antd";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import JoditEditor from "jodit-react";
+import { UploadOutlined } from "@ant-design/icons";
 
-const PostNewJob = () => {
+const CreateProfile = () => {
   const { isSuccess } = useSelector((state) => state.jobPost);
   const editor = useRef(null);
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const PostNewJob = () => {
     jobType: "",
     qualifications: "",
     applicationDeadline: null,
+    jobPosted: new Date(),
   });
 
   const clearFields = () => {
@@ -43,7 +45,6 @@ const PostNewJob = () => {
       qualifications: "",
       jobStatus: "",
       applicationDeadline: null,
-      jobPosted: null,
     });
   };
 
@@ -55,7 +56,7 @@ const PostNewJob = () => {
     console.log(newJobPost, "new job postings");
   };
 
-  const addNewJobs = () => {
+  const addProfileInfo = () => {
     const { applicationDeadline, salary } = newJobPost;
     const currentDate = new Date();
     if (salary < 0) {
@@ -93,10 +94,41 @@ const PostNewJob = () => {
     }
   };
 
+  const props = {
+    name: "file",
+    action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+    headers: {
+      authorization: "authorization-text",
+    },
+    onChange(info) {
+      console.log(info, "information");
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        Toastify({
+          text: "Logo Uploaded!!!",
+          className: "info",
+          style: {
+            background: "red",
+          },
+        }).showToast();
+      } else if (info.file.status === "error") {
+        Toastify({
+          text: "Cannot Upload Logo!!!",
+          className: "info",
+          style: {
+            background: "red",
+          },
+        }).showToast();
+      }
+    },
+  };
+
   return (
     <div>
       <div className={styles.jobPostForm}>
-        <h1 className={styles.jobPostHeading}>New Job Post</h1>
+        <h1 className={styles.jobPostHeading}>CREATE PROFILE</h1>
         <Form
           name="basic"
           labelCol={{
@@ -111,7 +143,7 @@ const PostNewJob = () => {
           initialValues={{
             remember: true,
           }}
-          onFinish={addNewJobs}
+          onFinish={addProfileInfo}
           autoComplete="off"
         >
           <Form.Item
@@ -137,65 +169,17 @@ const PostNewJob = () => {
           </Form.Item>
 
           <Form.Item
-            label="Job Title"
+            label="Designation"
             rules={[
               {
                 required: true,
-                message: "Please fill job title field!!",
-              },
-            ]}
-          >
-            <Input
-              value={newJobPost.jobTitle}
-              onChange={(e) => handleChange("jobTitle", e.target.value)}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Salary"
-            rules={[
-              {
-                required: true,
-                message: "Please fill salary field!",
-              },
-            ]}
-          >
-            <InputNumber
-              value={newJobPost.salary}
-              onChange={(value) => handleChange("salary", value)}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Experience"
-            rules={[
-              {
-                required: true,
-                message: "Please fill experience field!",
+                message: "Please fill designation field!",
               },
             ]}
           >
             <Input
               value={newJobPost.experience}
               onChange={(e) => handleChange("experience", e.target.value)}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Description"
-            rules={[
-              {
-                required: true,
-                message: "Please fill description field!",
-              },
-            ]}
-          >
-            <JoditEditor
-              ref={editor}
-              value={newJobPost.description}
-              tabIndex={1}
-              onChange={(value) => handleChange("description", value)}
-              required
             />
           </Form.Item>
 
@@ -214,20 +198,6 @@ const PostNewJob = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Timings">
-            <Input
-              value={newJobPost.timings}
-              onChange={(e) => handleChange("timings", e.target.value)}
-            />
-          </Form.Item>
-
-          <Form.Item label="Job Type">
-            <Input
-              value={newJobPost.jobType}
-              onChange={(e) => handleChange("jobType", e.target.value)}
-            />
-          </Form.Item>
-
           <Form.Item label="Qualifications">
             <Input
               value={newJobPost?.qualifications}
@@ -235,10 +205,17 @@ const PostNewJob = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Application Deadline">
+          <Form.Item label="Company's logo">
+            <Upload {...props}>
+              <Button icon={<UploadOutlined />}>Click to Upload</Button>
+            </Upload>
+          </Form.Item>
+
+          <Form.Item label="Joined Date">
             <Space direction="vertical" size={12}>
-              <DatePicker
-                onChange={(value) => handleChange("applicationDeadline", value)}
+              <Input
+                value={newJobPost?.qualifications}
+                onChange={(e) => handleChange("qualifications", e.target.value)}
               />
             </Space>
           </Form.Item>
@@ -255,7 +232,7 @@ const PostNewJob = () => {
                 htmlType="submit"
                 className={styles.clrPost}
               >
-                Post Job
+                Create Profile
               </Button>
             </Form.Item>
 
@@ -276,4 +253,4 @@ const PostNewJob = () => {
   );
 };
 
-export default PostNewJob;
+export default CreateProfile;

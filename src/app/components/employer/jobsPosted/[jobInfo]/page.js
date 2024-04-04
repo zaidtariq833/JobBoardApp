@@ -24,7 +24,7 @@ const JobInfo = ({ params }) => {
   return (
     <div>
       <div>
-        <h1 className={styles.jobs_posted}>Jobs Posted</h1>
+        <h1 className={styles.jobs_posted}>Jobs Info</h1>
       </div>
       {isLoading ? (
         <div className={stylesJob.loader}>

@@ -20,6 +20,8 @@ const page = () => {
     });
   };
 
+  const loginEmployer = () => {};
+
   return (
     <div className={styles.mainDiv}>
       <h1 className={styles.loginEmploy}>Login(Applicant)</h1>
@@ -46,6 +48,8 @@ const page = () => {
             <Input
               value={applicantLogin?.email}
               onChange={(e) => handleChange("email", e.target.value)}
+              required
+              placeholder="Enter Email..."
             />
           </Form.Item>
 
@@ -53,7 +57,8 @@ const page = () => {
             <Input.Password
               value={applicantLogin?.password}
               onChange={(e) => handleChange("password", e.target.value)}
-              placeholder="Enter Password"
+              placeholder="Enter Password..."
+              required
             />
           </Form.Item>
         </Form>
@@ -63,7 +68,7 @@ const page = () => {
           </Button>
         </div>
         <span>
-          Not a member? &nbsp;{" "}
+          Not a member? &nbsp;
           <span
             className={styles.signUpBtn}
             onClick={() => router.push("/components/applicants/signup")}

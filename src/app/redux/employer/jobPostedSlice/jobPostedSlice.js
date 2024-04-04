@@ -125,6 +125,9 @@ const jobsPostedSlice = createSlice({
       );
       state.filterJobs = filteredJobs;
     },
+    reset: (state) => {
+      state.job = {};
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addNewJob.pending, (state) => {
@@ -263,5 +266,5 @@ const jobsPostedSlice = createSlice({
   },
 });
 
-export const { addJobs, jobSearching } = jobsPostedSlice.actions;
+export const { addJobs, jobSearching, reset } = jobsPostedSlice.actions;
 export default jobsPostedSlice.reducer;

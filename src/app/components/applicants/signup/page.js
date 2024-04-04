@@ -1,12 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import styles from "../../employer/logIn/login.module.css";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Space, Switch, TreeSelect } from "antd";
 import Image from "next/image";
 import logo from "../../../../../assets/talenthirelogo.png";
 import { useRouter } from "next/navigation";
 
 const page = () => {
+  const [treeLine, setTreeLine] = useState(true);
+  const [showLeafIcon, setShowLeafIcon] = useState(false);
+  const [showIcon, setShowIcon] = useState(false);
   const router = useRouter();
   const [applicantLogin, setApplicantLogin] = useState({
     username: "",
@@ -47,12 +50,16 @@ const page = () => {
             <Input
               value={applicantLogin?.username}
               onChange={(e) => handleChange("username", e.target.value)}
+              required
+              placeholder="Enter Username..."
             />
           </Form.Item>
           <Form.Item label="Email" style={{ color: "#fff" }}>
             <Input
               value={applicantLogin?.email}
               onChange={(e) => handleChange("email", e.target.value)}
+              required
+              placeholder="Enter Email..."
             />
           </Form.Item>
 
@@ -60,13 +67,23 @@ const page = () => {
             <Input.Password
               value={applicantLogin?.password}
               onChange={(e) => handleChange("password", e.target.value)}
-              placeholder="Enter Password"
+              required
+              placeholder="Enter Password..."
             />
           </Form.Item>
         </Form>
+        <Space direction="vertical">
+          <Switch
+            checkedChildren="Enable Emails"
+            unCheckedChildren="Don't Enable Email"
+            checked={treeLine}
+            onChange={() => setTreeLine(!treeLine)}
+            style={{ marginBottom: "20px" }}
+          />
+        </Space>
         <div className={styles.buttons}>
           <Button className={styles.loggedIn} htmlType="submit">
-            Login
+            Sign Up
           </Button>
         </div>
         <span>
