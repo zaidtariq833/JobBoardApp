@@ -21,6 +21,7 @@ const page = () => {
   };
 
   const loginEmployer = () => {
+    router.push(`/components/applicants/jobsearch`)
   };
 
   return (

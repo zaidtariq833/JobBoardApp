@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { Button, Form, Input, Upload } from "antd";
-import styles from "../postNewJob/postNewJob.module.css";
+import styles from "../../employer/postNewJob/postNewJob.module.css";
 import { addNewJob } from "@/app/redux/employer/jobPostedSlice/jobPostedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -99,8 +99,9 @@ const CreateProfile = () => {
     headers: {
       authorization: "authorization-text",
     },
+    accept:
+      "application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     onChange(info) {
-      console.log(info, "information");
       if (info.file.status !== "uploading") {
         console.log(info.file, info.fileList);
       }
@@ -146,11 +147,11 @@ const CreateProfile = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="Company"
+            label="Name"
             rules={[
               {
                 required: true,
-                message: "Please fill company name field!",
+                message: "Please fill Name field!",
               },
             ]}
           >
@@ -160,7 +161,7 @@ const CreateProfile = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Company's Url">
+          <Form.Item label="Email">
             <Input
               value={newJobPost.companyWebsite}
               onChange={(e) => handleChange("companyWebsite", e.target.value)}
@@ -168,7 +169,7 @@ const CreateProfile = () => {
           </Form.Item>
 
           <Form.Item
-            label="Designation"
+            label="Education"
             rules={[
               {
                 required: true,
@@ -183,7 +184,7 @@ const CreateProfile = () => {
           </Form.Item>
 
           <Form.Item
-            label="Location"
+            label="Industry"
             rules={[
               {
                 required: true,
@@ -197,26 +198,17 @@ const CreateProfile = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Qualifications">
+          <Form.Item label="Role">
             <Input
               value={newJobPost?.qualifications}
               onChange={(e) => handleChange("qualifications", e.target.value)}
             />
           </Form.Item>
 
-          <Form.Item label="Company's logo">
+          <Form.Item label="Upload CV">
             <Upload {...props}>
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
-          </Form.Item>
-
-          <Form.Item label="Joined Date">
-            <Space direction="vertical" size={12}>
-              <Input
-                value={newJobPost?.qualifications}
-                onChange={(e) => handleChange("qualifications", e.target.value)}
-              />
-            </Space>
           </Form.Item>
 
           <div className={styles.btnsJobPost}>

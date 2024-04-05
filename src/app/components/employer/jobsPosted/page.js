@@ -18,7 +18,6 @@ const JobsPosted = ({ params }) => {
   const { isLoading, jobPosted, filterJobs } = useSelector(
     (state) => state.jobPost
   );
-  console.log(filterJobs, "filtered jobs in compo");
   const [currentPage, setCurrentPage] = useState(1);
   const [jobsPerPage] = useState(12);
   const [searchingJob, setSearchingJob] = useState("");
@@ -62,7 +61,7 @@ const JobsPosted = ({ params }) => {
               name="searchingJob"
               onChange={(e) => searchJob(e.target.value)}
               className={styles.inputs}
-              placeholder="Search for your favourite job..."
+              placeholder="Search for the jobs you posted..."
             />
           </div>
           {console.log(filterJobs, "filter jobs")}
@@ -70,7 +69,7 @@ const JobsPosted = ({ params }) => {
             <div className={styles.jobsPostedCard}>
               {filterJobs?.map((job) => (
                 <Link
-                  key={job?._id} // Moved key to Link component
+                  key={job?._id}
                   className={globals.link}
                   href={`/components/employer/jobsPosted/${job?._id}`}
                 >

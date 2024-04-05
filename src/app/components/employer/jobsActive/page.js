@@ -48,7 +48,7 @@ const JobsActive = () => {
                 <div className={styles.jobsPostedCard}>
                   {jobActive.map((active) => (
                     <Card
-                      title="React Developer"
+                      title={active?.jobTitle}
                       extra={
                         <div className={styles.iconsStatus}>
                           <span
@@ -80,7 +80,7 @@ const JobsActive = () => {
                       style={{
                         width: 350,
                       }}
-                      key={active._id} // Added key prop for optimization
+                      key={active._id}
                     >
                       <div className={styles.jobTitle}>
                         <h3>Company:</h3>
@@ -98,19 +98,6 @@ const JobsActive = () => {
                         <h3>Experience:</h3>
                         <span>{active?.experience}</span>
                       </div>
-                      {/* <div className={styles.description}>
-              <h3>Description:</h3>
-              {active?.description?.length <= 200 ? (
-                <span>{active?.description}</span>
-              ) : (
-                <>
-                  {active?.description?.substring(0, 200)}
-                  <a href="#" style={{ color: "blue", marginLeft: "10px" }}>
-                    See More
-                  </a>
-                </>
-              )}
-            </div> */}
                     </Card>
                   ))}
                 </div>

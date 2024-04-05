@@ -43,3 +43,17 @@
 .navLinks li a:hover {
   color: #ddd;
 }
+
+.logoutBtn {
+  display: flex;
+  flex-direction: column;
+  line-height: 0;
+  align-items: center;
+}
+
+.logoutBtn,
+.logoutTxt {
+  color: #e7d96d;
+  font-weight: bold;
+  text-decoration: none;
+}

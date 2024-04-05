@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import Login from "../applicants/login/page";
 import Image from "next/image";
 import SignUp from "../applicants/signup/page";
+import logo from "../../../../assets/talenthirelogo.png";
+import { LogoutOutlined } from "@ant-design/icons";
 
 const LayoutNavbar = ({ children }) => {
   const pathname = usePathname();
@@ -20,32 +22,31 @@ const LayoutNavbar = ({ children }) => {
       ) : (
         <nav className={styles.navbar}>
           <div className={styles.container}>
-            <Link href="/jobsearch">
+            <Link href="/">
               <Image className={styles.logo} src={logo} alt="logo" />
             </Link>
             <ul className={styles.navLinks}>
-              <li>
-                <Link href="/components/applicant/jobsapplied">JOBS APPLIED</Link>
+              <li className={styles.text}>
+                <Link href="/components/applicants/jobsearch">JOBS SEARCH</Link>
               </li>
-              <li>
-                <Link href="/components/applicant/favourites">
-                  FAVOURITES
+              <li className={styles.text}>
+                <Link href="/components/applicants/jobsapplied">
+                  JOBS APPLIED
                 </Link>
               </li>
-              <li>
-                <Link href="/components/employer/jobsActive">FAVOURITES</Link>
+              <li className={styles.text}>
+                <Link href="/components/applicants/favourites">FAVOURITES</Link>
               </li>
-              <li>
-                <Link href="/components/employer/totalCandidatesHired">
-                  TOTAL CANDIDATES HIRED
-                </Link>
-              </li>
-              <li>
-                <Link href="/components/employer/postNewJob">
-                  POST A NEW JOB
+              <li className={styles.text}>
+                <Link href="/components/applicants/createprofile">
+                  CREATE PROFILE
                 </Link>
               </li>
             </ul>
+            <Link href={`/`} className={styles.logoutBtn}>
+              <LogoutOutlined className={styles.iconLogout} />
+              <p className={styles.logoutTxt}>Logout</p>
+            </Link>
           </div>
           {children}
         </nav>

@@ -100,6 +100,7 @@ const CreateProfile = () => {
     headers: {
       authorization: "authorization-text",
     },
+    accept: "image/jpeg,image/png,image/webp",
     onChange(info) {
       console.log(info, "information");
       if (info.file.status !== "uploading") {
