@@ -20,7 +20,8 @@ const page = () => {
     });
   };
 
-  const loginEmployer = () => {};
+  const loginEmployer = () => {
+  };
 
   return (
     <div className={styles.mainDiv}>

@@ -20,23 +20,20 @@ const LayoutNavbar = ({ children }) => {
       ) : (
         <nav className={styles.navbar}>
           <div className={styles.container}>
-            <Link href="/">
+            <Link href="/jobsearch">
               <Image className={styles.logo} src={logo} alt="logo" />
             </Link>
             <ul className={styles.navLinks}>
               <li>
-                <Link href="/components/employer/dashboard">DASHBOARD</Link>
+                <Link href="/components/applicant/jobsapplied">JOBS APPLIED</Link>
               </li>
               <li>
-                <Link href="/components/employer/jobsPosted">JOBS POSTED</Link>
-              </li>
-              <li>
-                <Link href="/components/employer/jobsExpired">
-                  JOBS EXPIRED
+                <Link href="/components/applicant/favourites">
+                  FAVOURITES
                 </Link>
               </li>
               <li>
-                <Link href="/components/employer/jobsActive">JOBS ACTIVE</Link>
+                <Link href="/components/employer/jobsActive">FAVOURITES</Link>
               </li>
               <li>
                 <Link href="/components/employer/totalCandidatesHired">
