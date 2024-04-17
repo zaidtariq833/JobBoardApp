@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../employer/layoutNavbar.module.css";
+// import styles from "../employer/layoutNavbar.module.css";
 import mainStyles from "../main/main.module.css";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import stylesLogo from "../../components/employer/layoutNavbar.module.css";
 import logo from "../../../../assets/talenthirelogo.png";
+import navbarStyles from "../main/navbar.module.css";
 
 const Navbar = ({ children }) => {
   const router = useRouter();
@@ -14,26 +15,22 @@ const Navbar = ({ children }) => {
     router.push(`/components/${url}`);
   };
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.container}>
+    <nav>
+      <div className= {navbarStyles.mainBlock}>
         <Link href="/">
-          <Image className={stylesLogo.logo} src={logo}  alt = "logo"/>
+          <Image className = {navbarStyles.imageStyling} width={300} src={logo} alt="logo" />
         </Link>
-        <ul className={styles.navLinks}>
-          <li className={mainStyles.loginStyles}>
+        <ul className={navbarStyles.lists}>
+          <li>
             <span
               onClick={() => handleRoute("employer/logIn")}
-              style={{ color: "#000" }}
-              className={mainStyles.link}
             >
               LOGIN AS EMPLOYER
             </span>
           </li>
-          <li className={mainStyles.loginStyles}>
+          <li>
             <span
               onClick={() => handleRoute("applicants/login")}
-              className={mainStyles.link}
-              style={{ color: "#000" }}
             >
               LOGIN AS APPLICANT
             </span>

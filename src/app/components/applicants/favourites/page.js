@@ -11,6 +11,10 @@ import {
   deleteJob,
   getActiveJobs,
 } from "@/app/redux/employer/jobPostedSlice/jobPostedSlice";
+import {
+  deleteFavouriteJobs,
+  getFavouriteJobs,
+} from "@/app/redux/applicant/favouritesSlice";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -19,14 +23,23 @@ const Favourites = () => {
   const { jobActive, isLoading, jobPosted } = useSelector(
     (state) => state.jobPost
   );
+  const { favourites, favouriteJobLoading } = useSelector(
+    (state) => state.favouriteJob
+  );
 
-  const deleteActiveJob = (id) => {
-    dispatch(deleteJob(id));
+  console.log(favourites, "jobs favourite");
+
+  const deleteFavJob = (id) => {
+    dispatch(deleteFavouriteJobs(id));
   };
 
   useEffect(() => {
     dispatch(getActiveJobs());
   }, [dispatch, jobPosted]);
+
+  useEffect(() => {
+    dispatch(getFavouriteJobs());
+  }, [dispatch]);
 
   return (
     <div>
@@ -40,7 +53,7 @@ const Favourites = () => {
           </div>
         ) : (
           <>
-            {jobActive?.length == 0 ? (
+            {favourites?.length == 0 ? (
               <div className={styles.noJobAvailable}>
                 <h1 style={{ color: "black" }}>
                   You have no favourite jobs available
@@ -49,19 +62,17 @@ const Favourites = () => {
             ) : (
               <>
                 <div className={styles.jobsPostedCard}>
-                  {jobActive.map((active) => (
+                  {favourites.map((active) => (
                     <Link
                       href={`/components/applicants/favourites`}
                       className={globals.link}
                     >
                       <Card
-                        title="React Developer"
+                        title={active?.jobTitle}
                         extra={
                           <div className={styles.iconsStatus}>
                             <div className={styles.icons}>
-                              <span
-                                onClick={() => deleteActiveJob(active?._id)}
-                              >
+                              <span onClick={() => deleteFavJob(active?._id)}>
                                 <DeleteOutlined className={styles.deleteIcon} />
                               </span>
                             </div>
@@ -70,7 +81,7 @@ const Favourites = () => {
                         style={{
                           width: 350,
                         }}
-                        key={active._id}
+                        key={active?._id}
                       >
                         <div className={styles.jobTitle}>
                           <h3>Company:</h3>

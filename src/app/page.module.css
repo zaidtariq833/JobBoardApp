@@ -1,3 +1,8 @@
 .link {
   text-decoration: none;
 }
+
+.btnGrp {
+  display: inline-flex;
+  gap: 10px;
+}

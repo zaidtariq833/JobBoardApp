@@ -1,0 +1,8 @@
+.favourites {
+  transition-duration: 0.2s;
+  color: #fff;
+  background-color: #000;
+  padding: 10px;
+  position: relative;
+  top: -22px;
+}

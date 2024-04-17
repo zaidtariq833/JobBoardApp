@@ -1,0 +1,54 @@
+.lists {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lists > li {
+  list-style: none;
+}
+
+.lists > li > span {
+  font-weight: bold;
+}
+
+.lists > li:first-child {
+  background-color: #32cd32;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.lists > li:first-child:hover {
+  background-color: #faf9f6;
+  color: #32cd32;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.lists > li:nth-child(2) {
+  background-color: #fdda0d;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.lists > li:nth-child(2):hover {
+  background-color: #000;
+  color: #fdda0d;
+  padding: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.mainBlock {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.imageStyling {
+  mix-blend-mode: multiply;
+}

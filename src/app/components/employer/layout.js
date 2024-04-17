@@ -25,14 +25,19 @@ const LayoutNavbar = ({ children }) => {
               <Image className={styles.logo} src={logo} alt="logo" />
             </Link>
             <ul className={styles.navLinks}>
-              <li>
-                <Link
-                  className={styles.text}
-                  href="/components/employer/dashboard"
-                >
-                  DASHBOARD
-                </Link>
-              </li>
+              {pathname === "/components/employer/dashboard" ? (
+                ""
+              ) : (
+                <li>
+                  <Link
+                    className={styles.text}
+                    href="/components/employer/dashboard"
+                  >
+                    DASHBOARD
+                  </Link>
+                </li>
+              )}
+
               <li>
                 <Link
                   href="/components/employer/jobsPosted"

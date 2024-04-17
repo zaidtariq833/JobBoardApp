@@ -95,9 +95,6 @@ const JobInfo = ({ params }) => {
             </div>
           </Card>
         </div>
-        <Button>
-            
-        </Button>
       )}
     </div>
   );
