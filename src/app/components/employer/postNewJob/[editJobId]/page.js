@@ -38,6 +38,7 @@ const EditJob = ({ params }) => {
   useEffect(() => {
     const fetchSingleJobs = async () => {
       const data = await dispatch(getSingleJob(editJobId));
+      console.log(data, "Data checking object")
       setNewJobPost(data.payload);
     };
     fetchSingleJobs();
@@ -128,14 +129,14 @@ const EditJob = ({ params }) => {
             ]}
           >
             <Input
-              value={newJobPost.company}
+              value={newJobPost?.company}
               onChange={(e) => handleChange("company", e.target.value)}
             />
           </Form.Item>
 
           <Form.Item label="Company's Url">
             <Input
-              value={newJobPost.companyURL}
+              value={newJobPost?.companyURL}
               onChange={(e) => handleChange("companyURL", e.target.value)}
             />
           </Form.Item>
@@ -150,7 +151,7 @@ const EditJob = ({ params }) => {
             ]}
           >
             <Input
-              value={newJobPost.jobTitle}
+              value={newJobPost?.jobTitle}
               onChange={(e) => handleChange("jobTitle", e.target.value)}
             />
           </Form.Item>
@@ -165,7 +166,7 @@ const EditJob = ({ params }) => {
             ]}
           >
             <InputNumber
-              value={newJobPost.salary}
+              value={newJobPost?.salary}
               onChange={(value) => handleChange("salary", value)}
             />
           </Form.Item>
@@ -180,7 +181,7 @@ const EditJob = ({ params }) => {
             ]}
           >
             <Input
-              value={newJobPost.experience}
+              value={newJobPost?.experience}
               onChange={(e) => handleChange("experience", e.target.value)}
             />
           </Form.Item>
@@ -196,7 +197,7 @@ const EditJob = ({ params }) => {
           >
             <JoditEditor
               ref={editor}
-              value={newJobPost.description}
+              value={newJobPost?.description}
               tabIndex={1}
               onChange={(value) => handleChange("description", value)}
               required
@@ -213,21 +214,21 @@ const EditJob = ({ params }) => {
             ]}
           >
             <Input
-              value={newJobPost.location}
+              value={newJobPost?.location}
               onChange={(e) => handleChange("location", e.target.value)}
             />
           </Form.Item>
 
           <Form.Item label="Timings">
             <Input
-              value={newJobPost.timings}
+              value={newJobPost?.timings}
               onChange={(e) => handleChange("timings", e.target.value)}
             />
           </Form.Item>
 
           <Form.Item label="Job Type">
             <Input
-              value={newJobPost.jobType}
+              value={newJobPost?.jobType}
               onChange={(e) => handleChange("jobType", e.target.value)}
             />
           </Form.Item>

@@ -141,6 +141,7 @@ const jobsPostedSlice = createSlice({
       state.isSuccess = false;
     });
     builder.addCase(addNewJob.fulfilled, (state, action) => {
+      console.log(action.payload, "action payloading in job post")
       state.job = action.payload;
       const jobObj = state.job;
       state.jobPosted.push(jobObj);

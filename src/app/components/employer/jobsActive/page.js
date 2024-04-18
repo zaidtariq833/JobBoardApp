@@ -19,6 +19,8 @@ const JobsActive = () => {
     (state) => state.jobPost
   );
 
+  console.log(jobActive, "job actvi")
+
   const deleteActiveJob = (id) => {
     dispatch(deleteJob(id));
   };

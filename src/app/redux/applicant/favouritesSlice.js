@@ -20,7 +20,7 @@ export const addFavouriteJob = createAsyncThunk(
       data
     );
     console.log(data, "data of fav job");
-    console.log(response, "response of fav data");
+    console.log(response, "response of data in anything");
     return response.data;
   }
 );
@@ -87,7 +87,7 @@ const favouriteJobsSlice = createSlice({
     });
     builder.addCase(addFavouriteJob.fulfilled, (state, action) => {
       state.favourite = action.payload;
-      const favouriteObj = state.job;
+      const favouriteObj = state.favourite;
       state.favourites.push(favouriteObj);
       state.favouriteJobLoading = false;
       state.isError = false;

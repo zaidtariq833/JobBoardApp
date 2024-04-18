@@ -27,6 +27,7 @@ export const GET = async () => {
   try {
     await mongoose.connect(dbConnection);
     const getAllJobs = await JobsPosted.find();
+    console.log(getAllJobs, "get alljobs")
     return NextResponse.json(getAllJobs, { status: 200 }, { success: true });
   } catch (error) {
     return NextResponse.json(

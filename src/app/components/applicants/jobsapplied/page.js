@@ -13,6 +13,7 @@ import { Pagination } from "antd";
 import globals from "../../../page.module.css";
 import moment from "moment";
 import HeartOutlined from "@ant-design/icons";
+import { getCreateProfile } from "@/app/redux/applicant/createProfileSlice";
 
 const JobsApplied = ({ params }) => {
   console.log(params, "parameters");
@@ -30,6 +31,8 @@ const JobsApplied = ({ params }) => {
   const currentJobs = updateNewlyJobs.slice(indexOfFirstJob, indexOfLastJob);
   const date = new Date();
   const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.createProfileApp);
+  console.log(profile, "profile updated");
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -38,6 +41,7 @@ const JobsApplied = ({ params }) => {
   useEffect(() => {
     dispatch(getAllJobs());
   }, []);
+
 
   const searchJob = (val) => {
     console.log(val, "searched job");

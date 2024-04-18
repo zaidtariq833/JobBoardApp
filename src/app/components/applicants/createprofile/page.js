@@ -11,9 +11,9 @@ import "toastify-js/src/toastify.css";
 import JoditEditor from "jodit-react";
 import { UploadOutlined } from "@ant-design/icons";
 import stylesCreateProfile from "./createprofile.module.css";
+import { addCreateProfile } from "@/app/redux/applicant/createProfileSlice";
 
 const CreateProfile = () => {
-  const { isSuccess } = useSelector((state) => state.jobPost);
   const dispatch = useDispatch();
   const router = useRouter();
   const [sizeExceede, setSizeExceeded] = useState(false);
@@ -23,7 +23,7 @@ const CreateProfile = () => {
     education: "",
     industry: "",
     role: "",
-    uploadCV: null,
+    // uploadCV: null,
   });
 
   const clearFields = () => {
@@ -44,68 +44,50 @@ const CreateProfile = () => {
     });
   };
 
-  const handleUploadChange = (info) => {
-    const file = info?.fileList[0]?.originFileObj;
-    console.log(file, "file uploaded");
-    if (info?.fileList[0]?.originFileObj?.size > 189440) {
-      setSizeExceeded(true);
-      setCreateProfileApplicant({
-        ...createProfileApplicant,
-        uploadCV: null,
-      });
-      console.log(createProfileApplicant, "create profile in if");
+  // const handleUploadChange = async (info) => {
+  //   const file = await info?.fileList[0]?.originFileObj;
+  //   console.log(file, "file uploaded");
+  //   const fileSize = info?.fileList[0]?.originFileObj?.size;
+  //   console.log(fileSize);
+  //   if (fileSize > 5242880) {
+  //     Toastify({
+  //       text: "File Size Exceeded. Maximum File Upload is 5mb!!!",
+  //       className: "info",
+  //       style: {
+  //         background: "red",
+  //       },
+  //     }).showToast();
+  //     setSizeExceeded(true);
+  //   } else {
+  //     setCreateProfileApplicant((prevState) => ({
+  //       ...prevState,
+  //       uploadCV: file,
+  //     }));
+  //   }
+  // };
+
+  const addProfileInfo = () => {
+    console.log(createProfileApplicant, "profile applicant with cv");
+    const { uploadCV } = createProfileApplicant;
+    if (uploadCV === null) {
       Toastify({
-        text: "File Size Exceeded. Maximum File Upload is 5mb!!!",
+        text: "Please Upload CV!!!",
         className: "info",
         style: {
           background: "red",
         },
       }).showToast();
-      return false;
     } else {
-      setCreateProfileApplicant((prevState) => ({
-        ...prevState,
-        uploadCV: file,
-      }));
+      dispatch(addCreateProfile(createProfileApplicant));
+      Toastify({
+        text: "Profile Created Successfully!!!",
+        className: "info",
+        style: {
+          background: "green",
+        },
+      }).showToast();
+      router.push("/components/applicants/jobsearch");
     }
-  };
-
-  const addProfileInfo = () => {
-    // const { applicationDeadline, salary } = createProfileApplicant;
-    // const currentDate = new Date();
-    // if (salary < 0) {
-    //   Toastify({
-    //     text: "Please Select Salary Greater than 0!!!",
-    //     className: "info",
-    //     style: {
-    //       background: "red",
-    //     },
-    //   }).showToast();
-    //   return;
-    // }
-    // if (currentDate > applicationDeadline) {
-    //   Toastify({
-    //     text: "Please Select Correct Format of Date!!!",
-    //     className: "info",
-    //     style: {
-    //       background: "red",
-    //     },
-    //   }).showToast();
-    //   return;
-    // } else {
-    //   dispatch(addNewJob(createProfileApplicant));
-    //   clearFields();
-    //   Toastify({
-    //     text: "Form Submitted Successfully!!!",
-    //     className: "info",
-    //     style: {
-    //       background: "linear-gradient(to right, #00b09b, #96c93d)",
-    //     },
-    //   }).showToast();
-    //   if (isSuccess) {
-    //     router.push("/components/employer/jobsPosted");
-    //   }
-    // }
   };
 
   return (
@@ -188,18 +170,26 @@ const CreateProfile = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Upload CV">
+          {/* <Form.Item
+            label="Upload CV"
+            rules={[
+              {
+                required: true,
+                message: "Please Upload CV!!",
+              },
+            ]}
+          >
             <Upload
               accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               onChange={handleUploadChange}
               beforeUpload={() => false}
+              showUploadList={sizeExceede ? false : true}
+              multiple={false}
+              maxCount={1}
             >
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
-              <span
-                className={sizeExceede ? "ant-upload-list-item" : ""}
-              ></span>
             </Upload>
-          </Form.Item>
+          </Form.Item> */}
 
           <div className={styles.btnsJobPost}>
             <Form.Item
