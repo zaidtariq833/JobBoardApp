@@ -4,7 +4,6 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   profile: {},
-  profiles: [],
   profileLoading: false,
   isSuccess: false,
   isError: false,
@@ -30,6 +29,7 @@ export const getCreateProfile = createAsyncThunk(
     const response = await axios.get(
       "http://localhost:3000/components/applicants/api/createprofileapplicant"
     );
+    console.log(response, "responser of get");
     return response.data;
   }
 );

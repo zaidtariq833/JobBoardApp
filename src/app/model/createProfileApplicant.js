@@ -6,12 +6,12 @@ const createProfileApplicantSchema = new mongoose.Schema({
   education: String,
   industry: String,
   role: String,
-  //   uploadCV: {
-  //     uid: String,
-  //     name: String,
-  //     size: Number,
-  //     type: String,
-  //   },
+  uploadCV: {
+    uid: String,
+    name: String,
+    size: Number,
+    type: String,
+  },
 });
 
 export const CreateProfileApp =

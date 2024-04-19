@@ -14,6 +14,8 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import { Pagination } from "antd";
 import globals from "../../../page.module.css";
+import CreateProfileSuggestionModal from "../modalCreateProfile";
+import { getCreateProfile } from "@/app/redux/applicant/createProfileSlice";
 import moment from "moment";
 import {
   DeleteOutlined,
@@ -28,8 +30,10 @@ const JobsSearch = ({ params }) => {
   const { isLoading, jobPosted, filterJobs } = useSelector(
     (state) => state.jobPost
   );
+  const { profile } = useSelector((state) => state.createProfileApp);
   console.log(filterJobs, "filtered jobs in compo");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showDialogue, setShowDialogue] = useState(false);
   const [jobsPerPage] = useState(12);
   const [searchingJob, setSearchingJob] = useState("");
   const [iconClicked, setIconClicked] = useState(false);
@@ -50,13 +54,23 @@ const JobsSearch = ({ params }) => {
     dispatch(getAllJobs());
   }, []);
 
+  useEffect(() => {
+    dispatch(getCreateProfile());
+    console.log(profile, "profule");
+  }, []);
+
+  useEffect(() => {
+    const ObjectLength = Object.keys(profile).length;
+    profile.length === 0 || ObjectLength === 0
+      ? setShowDialogue(true)
+      : setShowDialogue(false);
+  }, []);
+
   const searchJob = (val) => {
     console.log(val, "searched job");
     dispatch(jobSearching(val));
     setSearchingJob(val);
   };
-
-  const applyJob = (job) => {};
 
   const addToFavourites = (job) => {
     dispatch(addFavouriteJob(job));
@@ -72,6 +86,7 @@ const JobsSearch = ({ params }) => {
 
   return (
     <div>
+      {showDialogue ? <CreateProfileSuggestionModal /> : null}
       <div>
         <h1 className={styles.jobs_posted}>Search Jobs</h1>
       </div>
@@ -250,7 +265,7 @@ const JobsSearch = ({ params }) => {
                         borderRadius: "7px",
                       }}
                       key={job?._id}
-                      href={`/components/employer/jobsPosted/${job?._id}`}
+                      href={`/components/applicants/viewjob/${job?._id}`}
                     >
                       View Job
                     </Link>

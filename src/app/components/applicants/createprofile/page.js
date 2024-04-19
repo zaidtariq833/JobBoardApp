@@ -23,7 +23,7 @@ const CreateProfile = () => {
     education: "",
     industry: "",
     role: "",
-    // uploadCV: null,
+    uploadCV: null,
   });
 
   const clearFields = () => {
@@ -44,27 +44,27 @@ const CreateProfile = () => {
     });
   };
 
-  // const handleUploadChange = async (info) => {
-  //   const file = await info?.fileList[0]?.originFileObj;
-  //   console.log(file, "file uploaded");
-  //   const fileSize = info?.fileList[0]?.originFileObj?.size;
-  //   console.log(fileSize);
-  //   if (fileSize > 5242880) {
-  //     Toastify({
-  //       text: "File Size Exceeded. Maximum File Upload is 5mb!!!",
-  //       className: "info",
-  //       style: {
-  //         background: "red",
-  //       },
-  //     }).showToast();
-  //     setSizeExceeded(true);
-  //   } else {
-  //     setCreateProfileApplicant((prevState) => ({
-  //       ...prevState,
-  //       uploadCV: file,
-  //     }));
-  //   }
-  // };
+  const handleUploadChange = async (info) => {
+    const file = await info?.fileList[0]?.originFileObj;
+    console.log(file, "file uploaded");
+    const fileSize = info?.fileList[0]?.originFileObj?.size;
+    console.log(fileSize);
+    if (fileSize > 5242880) {
+      Toastify({
+        text: "File Size Exceeded. Maximum File Upload is 5mb!!!",
+        className: "info",
+        style: {
+          background: "red",
+        },
+      }).showToast();
+      setSizeExceeded(true);
+    } else {
+      setCreateProfileApplicant((prevState) => ({
+        ...prevState,
+        uploadCV: file,
+      }));
+    }
+  };
 
   const addProfileInfo = () => {
     console.log(createProfileApplicant, "profile applicant with cv");
@@ -170,7 +170,7 @@ const CreateProfile = () => {
             />
           </Form.Item>
 
-          {/* <Form.Item
+          <Form.Item
             label="Upload CV"
             rules={[
               {
@@ -189,7 +189,7 @@ const CreateProfile = () => {
             >
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
-          </Form.Item> */}
+          </Form.Item>
 
           <div className={styles.btnsJobPost}>
             <Form.Item

@@ -66,7 +66,6 @@ const LayoutNavbar = ({ children }) => {
               <p className={styles.logoutTxt}>Logout</p>
               <span>{profile[0]?.email}</span>
             </Link>
-            <h1> {profile?.email}</h1>
           </div>
           {children}
         </nav>

@@ -42,6 +42,7 @@ export const deleteFavouriteJobs = createAsyncThunk(
     const response = await axios.delete(
       `http://localhost:3000/components/applicants/api/favouritejobs/${id}`
     );
+    console.log(response, "Favourite deleted")
     return response.data;
   }
 );
